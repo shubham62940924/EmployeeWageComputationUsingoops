@@ -19,15 +19,14 @@ public class EmployeeWageComputation {
 		this.maxHoursPerMonth = maxHoursPerMonth;
 	}
 
-	public static void totalEmpWage() {
-		EmployeeWageComputation dMart = new EmployeeWageComputation("dmart", 20, 20, 100);
+	public static void totalEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
 		Random random = new Random();
 		int totalWorkingDays = 0;
 		int totalWorkingHours = 0;
 		int empWage = 0;
 		int totalEmpWage = 0;
 
-		while (totalWorkingDays < dMart.numOfWorkingDays && totalWorkingHours < dMart.maxHoursPerMonth) {
+		while (totalWorkingDays < numOfWorkingDays && totalWorkingHours < maxHoursPerMonth) {
 			totalWorkingDays++;
 			int empCheck = random.nextInt(3);
 			int empHrs = 0;
@@ -41,17 +40,22 @@ public class EmployeeWageComputation {
 
 			}
 			totalWorkingHours = empHrs + totalWorkingHours;
-			empWage = empHrs * dMart.empRatePerHour;
+			empWage = empHrs * empRatePerHour;
 			System.out.println("day " + totalWorkingDays + " = " + empWage);
 			totalEmpWage = empWage + totalEmpWage;
 
 		}
-		System.out.println("salary of " + dMart.company + " employee is " + totalEmpWage);
+		System.out.println("salary of " + company + " employee is " + totalEmpWage);
 
 	}
 
 	public static void main(String[] args) {
-		totalEmpWage();
+		EmployeeWageComputation dMart = new EmployeeWageComputation("dmart", 20, 20, 100);
+		dMart.totalEmpWage(dMart.company, dMart.empRatePerHour, dMart.numOfWorkingDays, dMart.maxHoursPerMonth);
+		EmployeeWageComputation wipro = new EmployeeWageComputation("wipro", 20, 25, 100);
+		wipro.totalEmpWage(wipro.company, wipro.empRatePerHour, wipro.numOfWorkingDays, wipro.maxHoursPerMonth);
+		EmployeeWageComputation blz = new EmployeeWageComputation("BLZ", 25, 15, 100);
+		blz.totalEmpWage(blz.company, blz.empRatePerHour, blz.numOfWorkingDays, blz.maxHoursPerMonth);
 
 	}
 
