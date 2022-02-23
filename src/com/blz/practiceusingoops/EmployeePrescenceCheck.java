@@ -4,23 +4,31 @@ import java.util.Random;
 
 class Employee {
 	static final int IS_FULL_TIME = 1;
+	static final int EMP_WAGE_PER_DAY = 20;
 
-	public static void empCheckPrescence() {
-		Random rand = new Random();
-		int empCheck = rand.nextInt(2);
+	public static int empCheck() {
+		Random random = new Random();
+		int empCheck = random.nextInt(2);
+		return empCheck;
+	}
+
+	public static void empSalary(int empCheck) {
+		int empWrkHrs = 0;
 		if (empCheck == IS_FULL_TIME) {
-			System.out.println("Employee is Present");
+			empWrkHrs = 8;
 		} else {
-			System.out.println("Employee  is absent ");
+			empWrkHrs = 0;
 		}
+		int empWage = empWrkHrs * EMP_WAGE_PER_DAY;
+		System.out.println("empWage = " + empWage);
 	}
+}
 
-	public class EmployeePrescenceCheck {
+public class EmployeePrescenceCheck {
 
-		public static void main(String[] args) {
-			System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
-			Employee.empCheckPrescence();
-		}
+	public static void main(String[] args) {
+		System.out.println(" Welcome to Employee Wage Computation Program on Master Branch");
+		int empCheck = Employee.empCheck();
+		Employee.empSalary(empCheck);
 	}
-
 }
